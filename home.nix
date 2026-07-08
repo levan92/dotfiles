@@ -77,4 +77,15 @@ in
     config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.codex/config.toml";
   home.file.".config/opencode/AGENTS.md".source =
     config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/AGENTS.md";
+
+  # codex rewrites ~/.codex/config.toml at runtime (per-project trust levels,
+  # nux flags). that file is an out-of-store symlink into this repo, so its
+  # writes would otherwise show up as churn in a public repo. skip-worktree
+  # tells git to ignore local edits; re-applied here so it survives fresh clones.
+  home.activation.codexConfigSkipWorktree =
+    config.lib.dag.entryAfter [ "writeBoundary" ] ''
+      if [ -d "${dotfiles}/.git" ]; then
+        ${pkgs.git}/bin/git -C "${dotfiles}" update-index --skip-worktree home/.codex/config.toml 2>/dev/null || true
+      fi
+    '';
 }
