@@ -1,5 +1,6 @@
-# default to "full-auto": auto-run edits & commands without prompting,
-# but sandboxed to the workspace with network disabled.
-# equivalent of launching `codex --full-auto` every time.
-approval_policy = "on-failure"
+# default to full-auto: auto-run edits & commands without prompting,
+# but sandboxed to the workspace with network disabled. commands needing
+# more than the sandbox allows just fail back to the model (no prompt).
+# `never` is the non-deprecated successor to the old `on-failure` policy.
+approval_policy = "never"
 sandbox_mode    = "workspace-write"
