@@ -13,6 +13,7 @@ in
     ripgrep   # fast search
     fd        # fast find
     fzf       # fuzzy finder
+    eza       # modern ls with type/git-aware colors
     jq        # json on the command line
     gh        # github cli
     lazygit
@@ -33,6 +34,10 @@ in
     '';
     shellAliases = {
       ".." = "cd ..";
+      ls = "eza --group-directories-first";
+      ll = "eza -l --git --group-directories-first";
+      la = "eza -la --git --group-directories-first";
+      lt = "eza -la --git --sort=modified --reverse";  # newest first (ls -ltra)
       add = "git add .";
       push = "git push";
       pull = "git pull";
