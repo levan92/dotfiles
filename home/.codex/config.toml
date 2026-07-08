@@ -1,0 +1,5 @@
+# default to "full-auto": auto-run edits & commands without prompting,
+# but sandboxed to the workspace with network disabled.
+# equivalent of launching `codex --full-auto` every time.
+approval_policy = "on-failure"
+sandbox_mode    = "workspace-write"
