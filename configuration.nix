@@ -28,14 +28,19 @@
   nix-homebrew = {
     enable = true;
     inherit user;
+    autoMigrate = true;
   };
   homebrew = {
     enable = true;
     onActivation.cleanup = "zap";  # remove anything not listed here
     onActivation.autoUpdate = true;
     onActivation.extraFlags = [ "--force" ];
+    taps = [
+      "anchore/grype"   # third-party tap that provides grype
+    ];
     brews = [
       "herdr"
+      "anchore/grype/grype"   # vulnerability scanner (fully-qualified: tap/formula)
     ];
     casks = [
       "wezterm"
