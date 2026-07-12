@@ -19,6 +19,15 @@ in
     lazygit
     neovim
     codex     # openai's terminal coding agent (pinned to unstable, see flake.nix overlay)
+    # latex toolchain for resume_latex/ - xelatex plus the exact package set
+    # both cv_12 (two-column) and cv_ats (single-column) need. verified to
+    # compile both before declaring, so no missing-package surprises.
+    (texlive.combine {
+      inherit (texlive)
+        scheme-medium
+        titlesec enumitem setspace needspace
+        fontawesome5 paracol moresize textpos isodate substr multirow;
+    })
     # the font everything renders in
     nerd-fonts.hack
   ];
