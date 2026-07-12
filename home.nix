@@ -18,7 +18,7 @@ in
     gh        # github cli
     lazygit
     neovim
-    codex     # openai's terminal coding agent
+    codex     # openai's terminal coding agent (pinned to unstable, see flake.nix overlay)
     # the font everything renders in
     nerd-fonts.hack
   ];
