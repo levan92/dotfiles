@@ -17,7 +17,7 @@
       AppleInterfaceStyle = "Dark";
       KeyRepeat = 2;          # fast key repeat
       InitialKeyRepeat = 15;  # short delay before repeat
-      _HIHideMenuBar = true;  # auto-hide the menu bar
+      _HIHideMenuBar = false;  # keep the menu bar (and clock) always visible
       AppleShowAllExtensions = true;
     };
     dock.autohide = true;
@@ -46,6 +46,7 @@
     casks = [
       "wezterm"
       "claude-code"
+      "surfshark"
     ];
   };
 }
