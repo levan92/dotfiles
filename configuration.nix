@@ -47,6 +47,7 @@
       "wezterm"
       "claude-code"
       "surfshark"
+      "chatgpt"
     ];
   };
 }

@@ -16,9 +16,14 @@ in
     eza       # modern ls with type/git-aware colors
     jq        # json on the command line
     gh        # github cli
+    git       # the real git; macos only ships an xcode-license-gated shim
     lazygit
     neovim
+    uv        # python project/toolchain manager; projects pin their own python + deps (e.g. hud sdk)
+    # Python with Gymnasium for the local RL environment QA prototype.
+    (python3.withPackages (ps: [ ps.gymnasium ]))
     codex     # openai's terminal coding agent (pinned to unstable, see flake.nix overlay)
+    yt-dlp    # video/audio downloader; bundles ffmpeg (pinned to unstable, extractors break fast)
     # latex toolchain for resume_latex/ - xelatex plus the exact package set
     # both cv_12 (two-column) and cv_ats (single-column) need. verified to
     # compile both before declaring, so no missing-package surprises.

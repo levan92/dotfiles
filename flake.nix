@@ -26,6 +26,7 @@
       # on the stable channel. useGlobalPkgs makes this overlay reach home.nix too.
       unstableOverlay = final: prev: {
         codex = nixpkgs-unstable.legacyPackages.${prev.system}.codex;
+        yt-dlp = nixpkgs-unstable.legacyPackages.${prev.system}.yt-dlp;
       };
     in
     {
