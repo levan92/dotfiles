@@ -12,6 +12,11 @@
     home = "/Users/${user}";
   };
   system.stateVersion = 6;
+
+  # Authenticate sudo with Touch ID. sudo_local writes /etc/pam.d/sudo_local,
+  # which survives macOS updates (unlike patching /etc/pam.d/sudo directly).
+  security.pam.services.sudo_local.touchIdAuth = true;
+
   system.defaults = {
     NSGlobalDomain = {
       AppleInterfaceStyle = "Dark";
@@ -35,13 +40,13 @@
     enable = true;
     onActivation.cleanup = "zap";  # remove anything not listed here
     onActivation.autoUpdate = true;
+    onActivation.upgrade = true;  # upgrade declared brews/casks on every rebuild
     onActivation.extraFlags = [ "--force" ];
-    taps = [
-      "anchore/grype"   # third-party tap that provides grype
-    ];
+    taps = [ ];
     brews = [
       "herdr"
-      "anchore/grype/grype"   # vulnerability scanner (fully-qualified: tap/formula)
+      # grype moved to home.packages (nixpkgs); the anchore tap formula was
+      # disabled upstream 2025-07-01 and only builds from source.
     ];
     casks = [
       "wezterm"

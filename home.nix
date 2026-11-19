@@ -24,6 +24,7 @@ in
     (python3.withPackages (ps: [ ps.gymnasium ]))
     codex     # openai's terminal coding agent (pinned to unstable, see flake.nix overlay)
     yt-dlp    # video/audio downloader; bundles ffmpeg (pinned to unstable, extractors break fast)
+    grype     # vulnerability scanner; was the anchore tap formula, disabled upstream 2025-07-01
     # latex toolchain for resume_latex/ - xelatex plus the exact package set
     # both cv_12 (two-column) and cv_ats (single-column) need. verified to
     # compile both before declaring, so no missing-package surprises.
