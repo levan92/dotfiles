@@ -23,6 +23,7 @@ in
     # Python with Gymnasium for the local RL environment QA prototype.
     (python3.withPackages (ps: [ ps.gymnasium ]))
     codex     # openai's terminal coding agent (pinned to unstable, see flake.nix overlay)
+    nodejs    # node + npm; openai interview prep requires node 20+ and npm on PATH
     yt-dlp    # video/audio downloader; bundles ffmpeg (pinned to unstable, extractors break fast)
     grype     # vulnerability scanner; was the anchore tap formula, disabled upstream 2025-07-01
     # latex toolchain for resume_latex/ - xelatex plus the exact package set
