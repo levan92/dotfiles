@@ -15,3 +15,22 @@ copy_mode  = "prefix+y"  # herdr's copy-mode entry key; copy-mode's own internal
 
 [ui]
 agent_panel_sort = "priority"
+
+# agent + file explorer layouts (see layout.sh); run from a fresh shell pane
+[[keys.command]]
+key = "prefix+o"
+type = "shell"
+command = "$HOME/.config/herdr/layout.sh codex"
+description = "codex | yazi"
+
+[[keys.command]]
+key = "prefix+i"
+type = "shell"
+command = "$HOME/.config/herdr/layout.sh claude"
+description = "claude | yazi"
+
+[[keys.command]]
+key = "prefix+u"
+type = "shell"
+command = "$HOME/.config/herdr/layout.sh claude codex"
+description = "claude / codex | yazi"
