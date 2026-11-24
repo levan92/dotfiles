@@ -79,6 +79,30 @@ Edit the config files in place, then apply:
 That's it.
 No separate build-and-copy step.
 
+## Terminal and agent workflow
+
+The terminal is WezTerm with [herdr](https://herdr.dev) (a multiplexer built for coding agents) running inside it.
+Run each shortcut from an idle shell pane, which becomes the left side of the layout.
+[yazi](https://yazi-rs.github.io) (file explorer) takes the right 30%.
+
+| herdr (preferred) | WezTerm only | Layout |
+|---|---|---|
+| `Ctrl+b` `o` | `Cmd+Shift+O` | codex \| yazi |
+| `Ctrl+b` `i` | `Cmd+Shift+I` | claude \| yazi |
+| `Ctrl+b` `u` | `Cmd+Shift+U` | claude / codex stacked \| yazi |
+
+Other WezTerm keys: `Cmd+Enter` maximizes the window (there's no title bar to double-click).
+In a plain shell, `y` opens yazi and drops you in the last directory you browsed to.
+
+**Agents talking to each other.**
+Inside herdr, claude and codex can message each other with `agent-msg` (`home/bin/agent-msg.sh`).
+It submits the message as a prompt in the other agent's pane, tagged with the sender's pane id so the receiver can reply.
+`agent-msg list` shows live agents, and `agent-msg codex "..."` messages the codex agent in the same tab.
+Both agents learn the protocol from the shared `home/AGENTS.md`.
+That file tells them to start a conversation only when you ask, to treat peer messages as requests rather than user approval, and to skip content-free acknowledgements.
+Ask one agent to coordinate ("ask codex to review this") and they take it from there.
+It only works for agents running in herdr panes, and agents read `AGENTS.md` at startup, so restart them after changing it.
+
 ## Make it yours
 
 This repo is mine.
@@ -129,6 +153,7 @@ If you don't use it, just remove it from `brews` in your copy.
 - `rebuild.sh` - re-applies the config after the first switch.
   Run this every time you make a change.
 - `home/` - the actual config files that get symlinked into place (Neovim, WezTerm, herdr, Claude settings, the shared `AGENTS.md`).
+  `home/bin/` holds scripts that `home.nix` builds into commands (like `agent-msg`).
 
 ## How the symlinks work
 
