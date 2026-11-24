@@ -53,6 +53,7 @@
       "claude-code"
       "surfshark"
       "chatgpt"
+      "sublime-text"  # GUI text editor; yazi opens text files in it (home.nix)
     ];
   };
 }

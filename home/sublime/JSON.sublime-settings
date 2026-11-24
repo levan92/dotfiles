@@ -1,0 +1,6 @@
+// Syntax-specific settings for JSON (Sublime Text, Packages/User).
+// Symlinked into place by home.nix.
+{
+	// JSON Lines files: every line is a JSON value, so the JSON syntax highlights them fully.
+	"extensions": ["jsonl", "ndjson"],
+}

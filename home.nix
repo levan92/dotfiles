@@ -75,6 +75,10 @@ in
     enable = true;
     enableZshIntegration = true;
     shellWrapperName = "y";
+    # Enter on a text file opens Sublime Text (detached) instead of $EDITOR (nvim).
+    settings.opener.edit = [
+      { run = ''subl "$@"''; orphan = true; desc = "Sublime Text"; for = "unix"; }
+    ];
   };
 
   programs.starship = {
@@ -108,6 +112,10 @@ in
     config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.codex/config.toml";
   home.file.".config/opencode/AGENTS.md".source =
     config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/AGENTS.md";
+  # Sublime Text: only individual settings files are managed; the rest of
+  # Packages/User (license, Package Control state) stays app-owned.
+  home.file."Library/Application Support/Sublime Text/Packages/User/JSON.sublime-settings".source =
+    config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/sublime/JSON.sublime-settings";
 
   # codex rewrites ~/.codex/config.toml at runtime (per-project trust levels,
   # nux flags). that file is an out-of-store symlink into this repo, so its
