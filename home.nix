@@ -63,6 +63,14 @@ in
     };
   };
 
+  # terminal file explorer; run in a herdr split next to codex / claude.
+  # `y` opens it and cd's into wherever you were when you quit.
+  programs.yazi = {
+    enable = true;
+    enableZshIntegration = true;
+    shellWrapperName = "y";
+  };
+
   programs.starship = {
     enable = true;
     settings = {
