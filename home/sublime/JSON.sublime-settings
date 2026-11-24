@@ -3,4 +3,7 @@
 {
 	// JSON Lines files: every line is a JSON value, so the JSON syntax highlights them fully.
 	"extensions": ["jsonl", "ndjson"],
+
+	// Wrap long lines (Sublime's "auto" leaves code syntaxes unwrapped), since a JSONL record is one line.
+	"word_wrap": true,
 }
