@@ -58,6 +58,7 @@ in
       pull = "git pull";
       m = "git switch main";
       cc = "claude --dangerously-skip-permissions";
+      rebuild = "~/.dotfiles/rebuild.sh";
     };
   };
 
